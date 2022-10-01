@@ -1,6 +1,6 @@
 # Beeldeploy 
 
-Beeldeploy is a simple tool build at Beeldi.com to allow us to store Cloud Functions configurations in yaml instead of having endless command line arguments.
+Beeldeploy is a simple tool to allow us to store Cloud Functions configurations in yaml instead of having endless command line arguments.
 
 ## How to install 
 
