@@ -1,0 +1,40 @@
+source: ./
+
+tigger: http
+
+allow-unauthenticated: true
+
+runtime: nodejs16
+
+envs:
+  FOO: bar
+  FUZZ: buzz
+
+secrets:
+  test: 
+    env_var: TEST
+    version: latest
+  firebase_key:
+    env_var: FIREBASE_KEY 
+    version: latest
+  tiptop_key:
+    env_var: TIPTOP_KEY
+    version: latest
+
+timeout: 10
+
+
+max-instances: 300
+min-instances: 10
+
+memory: 256
+
+service-account: lafusew@gcloud.com
+
+gen2: false
+
+vpc-connector: shared-vpc
+
+serve-all-traffic-latest-revision: true
+
+
