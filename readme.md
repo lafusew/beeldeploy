@@ -18,6 +18,21 @@ It will change, but for now create a .yaml config file wherever you want. Like t
 
 And run `beeldeploy -f <function-name> -c <config-file-path>`
 
+## .yaml config file
+
+For params that are `bool`, `string` or `number` it's pretty straigh forward: `<YAML-KEY>: <VALUE>`  
+For params that aren't, you'll have to respect a given syntax. Here the list of it:
+
+```yaml
+secrets:
+    <SECRET-NAME>:
+        env-var: <ENV-VAR-NAME>
+        version: <SECRET-VERSION>
+
+envs:
+    <ENV-VAR-NAME>: <VALUE>
+```
+
 ## Supported flags.
 
 **/!\ name need to be set using -f flag on beeldeploy cmd**
@@ -81,29 +96,3 @@ Currently all google cloud functions deployement -flags aren't supported you fin
 |         trigger-ressource          |     ❌     |
 |       trigger-event-filters        |     ❌     |
 | trigger-event-filters-path-pattern |     ❌     |
-
-## .yaml config file
-
-For params that are `bool`, `string` or `number` it's pretty straigh forward: `<YAML-KEY>: <VALUE>`  
-For params that aren't, you'll have to respect a given syntax. Here the list of it:
-
-```yaml
-secrets:
-    <SECRET-NAME>:
-        env-var: <ENV-VAR-NAME>
-        version: <SECRET-VERSION>
-
-envs:
-    <ENV-VAR-NAME>: <VALUE>
-```
-
-
-
-
-
-
-
-
-
-
-    
