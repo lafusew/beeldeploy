@@ -1,10 +1,9 @@
 source: ./
-
-tigger: http
-
-allow-unauthenticated: true
-
 runtime: nodejs16
+entry-point: beeldeploy_tool_fn_test
+
+trigger-http: true
+allow-unauthenticated: true
 
 envs:
   FOO: bar
@@ -23,17 +22,14 @@ secrets:
 
 timeout: 10
 
-
 max-instances: 300
 min-instances: 10
 
 memory: 256
 
-service-account: lafusew@gcloud.com
-
 gen2: false
 
-vpc-connector: shared-vpc
+vpc: shared-vpc
 
 serve-all-traffic-latest-revision: true
 
