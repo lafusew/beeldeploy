@@ -24,26 +24,26 @@ And run `beeldeploy -f <function-name> -c <config file path>`
 
 Currently all google cloud functions deployement -flags aren't supported you find the list here:
 
-|               Flags                | Supported |
-| :--------------------------------: | :-------: |
-|               region               |     ✅     |
-|       allow-unauthenticated        |     ✅     |
-|          docker-registery          |     ✅     |
-|          egress-settings           |     ❌     |
-|            entry-point             |     ✅     |
-|                gen2                |     ✅     |
-|            ignore-file             |     ❌     |
-|          ingress-settings          |     ❌     |
-|               memory               |     ✅     |
-|               retry                |     ❌     |
-|        run-service-account         |     ❌     |
-|              runtime               |     ✅     |
+|               Flags                | Supported |             YAML Key              |
+| :--------------------------------: | :-------: | :-------------------------------: |
+|       allow-unauthenticated        |     ✅     |       allow-unauthenticated       |
+|          docker-registery          |     ✅     |         docker-registery          |
+|          egress-settings           |     ✅     |              egress               |
+|            entry-point             |     ✅     |            entry-point            |
+|                gen2                |     ✅     |               gen2                |
+|            ignore-file             |     ✅     |            ignore-file            |
+|          ingress-settings          |     ✅     |              ingress              |
+|               memory               |     ✅     |              memory               |
+|               retry                |     ✅     |               retry               |
+|        run-service-account         |     ✅     |        run-service-account        |
+|              runtime               |     ✅     |              runtime              |
 |           security-level           |     ❌     |
-| serve-all-traffic-latest-revision  |     ✅     |
-|          service-account           |     ✅     |
-|               source               |     ✅     |
+| serve-all-traffic-latest-revision  |     ✅     | serve-all-traffic-latest-revision |
+|          service-account           |     ✅     |          service-account          |
+|               region               |     ✅     |              region               |
+|               source               |     ✅     |                src                |
 |            stage-bucket            |     ❌     |
-|              timeout               |     ✅     |
+|              timeout               |     ✅     |              timeout              |
 |          trigger-location          |     ❌     |
 |      trigger-service-account       |     ❌     |
 |           update-labels            |     ❌     |
@@ -57,7 +57,7 @@ Currently all google cloud functions deployement -flags aren't supported you fin
 |      clear-docker-repository       |     ❌     |
 |         docker-repository          |     ❌     |
 |           clear-env-vars           |     ❌     |
-|            set-env-vars            |     ✅     |
+|            set-env-vars            |     ✅     |               envs                |
 |          remove-env-vars           |     ❌     |
 |          update-env-vars           |     ❌     |
 |           clear-kms-key            |     ❌     |
@@ -65,17 +65,17 @@ Currently all google cloud functions deployement -flags aren't supported you fin
 |            clear-labels            |     ❌     |
 |           remove-labels            |     ❌     |
 |         clear-max-instance         |     ❌     |
-|           max-instances            |     ✅     |
+|           max-instances            |     ✅     |           max-instances           |
 |         clear-min-instance         |     ❌     |
-|           min-instances            |     ✅     |
+|           min-instances            |     ✅     |           min-instances           |
 |           clear-secrets            |     ❌     |
-|            set-secrets             |     ✅     |
+|            set-secrets             |     ✅     |              secrets              |
 |           remove-secrets           |     ❌     |
 |           update-secrets           |     ❌     |
 |        clear-vpc-connector         |     ❌     |
-|           vpc-connector            |     ✅     |
+|           vpc-connector            |     ✅     |                vpc                |
 |           trigger-bucket           |     ❌     |
-|            tigger-http             |     ✅     |
+|            tigger-http             |     ✅     |           trigger-http            |
 |           trigger-topic            |     ❌     |
 |           trigger-event            |     ❌     |
 |         trigger-ressource          |     ❌     |
