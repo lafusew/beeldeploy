@@ -16,12 +16,12 @@ func main() {
 
 	err := CheckInstallCLI()
 	if err != nil {
-		fmt.Printf("%s\nInstall the gcloud CLI, login and choose the project you want to deploy on. \nInstallation guide: https://cloud.google.com/sdk/docs/install \n", err)
+		fmt.Printf("Error: %s\n\nInstall the gcloud CLI, login and choose the project you want to deploy on. \nInstallation guide: https://cloud.google.com/sdk/docs/install \n", err)
 		return
 	}
 
 	if *fnNamePtr == "" {
-		fmt.Printf("function name wasn't provided, be sure to use -f flag\n\nfunction deploy aborted")
+		fmt.Printf("function name wasn't provided, be sure to use -f flag\n")
 		return
 	}
 
@@ -38,7 +38,7 @@ func main() {
 		fmt.Printf("%s\n .yaml file must be incorrect you can find a full example at:\n https://gist.github.com/lafusew/c4e4ed32b09d7e91e05f29e6dcc164c3", err)
 	}
 
-	cmd := fmt.Sprintf("gcloud functions deploy %s %s", *fnNamePtr, Command(config))
+	args := CreateArgs(*fnNamePtr, config)
 
-	Exec(cmd)
+	Exec(args)
 }

@@ -1,16 +1,27 @@
 package main
 
 import (
-	"fmt"
+	"log"
+	"os"
+	"os/exec"
 )
 
 // Check the installation of gcloud CLI application
 func CheckInstallCLI() error {
-	// fmt.Printf("Check gcloud installation and auth\n\n")
-	return nil
+	cmd := exec.Command("gcloud", "--version")
+	err := cmd.Run()
+
+	return err
 }
 
-// Executes the cmd and print the output
-func Exec(cmd string) {
-	fmt.Printf("Executes cmd:\n\n%s\n", cmd)
+// Executes the gcloud cmd and print the output
+func Exec(args []string) {
+	cmd := exec.Command("gcloud", args...)
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+
+	err := cmd.Run()
+	if err != nil {
+		log.Fatalf("Cloud function deploy failed")
+	}
 }
