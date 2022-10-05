@@ -13,7 +13,7 @@ type Config struct {
 	AllowUnauthenticated bool              `yaml:"allow-unauthenticated" gcloud:"allow-unauthenticated"`
 	DockerRegistery      string            `yaml:"docker-registry" gcloud:"docker-registry"`
 	EgressSettings       string            `yaml:"egress" gcloud:"egress-settings"`
-	EntryPoint           string            `yaml:"entry-point" glcoud:"entry-point"`
+	EntryPoint           string            `yaml:"entry-point" gcloud:"entry-point"`
 	Gen2                 bool              `yaml:"gen2" gcloud:"gen2"`
 	IgnoreFile           string            `yaml:"ignore-file" gcloud:"ignore-file"`
 	IngressSettings      string            `yaml:"ingress" gcloud:"ingress-settings"`
@@ -37,8 +37,8 @@ type Config struct {
 }
 
 // Return cmd line args and flags from the .yaml config file
-func Command(config Config) string {
-	var cmd string
+func CreateArgs(fnName string, config Config) []string {
+	var cmdArgs []string = []string{"functions", "deploy", fnName}
 
 	c_values := reflect.ValueOf(config)
 	c_type := c_values.Type()
@@ -50,52 +50,50 @@ func Command(config Config) string {
 				continue
 			}
 
-			cmd += fmt.Sprintf("--%s=%s ", c_type.Field(i).Tag.Get("gcloud"), val)
+			cmdArgs = append(cmdArgs, fmt.Sprintf("--%s=%s", c_type.Field(i).Tag.Get("gcloud"), val))
 
 		case bool:
 			if !val {
 				continue
 			}
 
-			cmd += fmt.Sprintf("--%s ", c_type.Field(i).Tag.Get("gcloud"))
+			cmdArgs = append(cmdArgs, fmt.Sprintf("--%s", c_type.Field(i).Tag.Get("gcloud")))
 
 		case int:
 			if val == 0 {
 				continue
 			}
 
-			cmd += fmt.Sprintf("--%s=%v ", c_type.Field(i).Tag.Get("gcloud"), val)
+			cmdArgs = append(cmdArgs, fmt.Sprintf("--%s=%v", c_type.Field(i).Tag.Get("gcloud"), val))
 
 		case map[string]Secret:
 			if len(val) == 0 {
 				continue
 			}
 
-			arg := fmt.Sprintf("--%s ", c_type.Field(i).Tag.Get("gcloud"))
-
 			for k, v := range val {
-				arg += fmt.Sprintf("%s=%s:%s ", v["env_var"], k, v["version"])
+				cmdArgs = append(cmdArgs, fmt.Sprintf("--%s", c_type.Field(i).Tag.Get("gcloud")))
+				cmdArgs = append(cmdArgs, fmt.Sprintf("%s=%s:%s", v["env_var"], k, v["version"]))
 			}
-
-			cmd += arg
 
 		case Envs:
 			if len(val) == 0 {
 				continue
 			}
 
-			arg := fmt.Sprintf("--%s ", c_type.Field(i).Tag.Get("gcloud"))
-
 			for k, v := range val {
-				arg += fmt.Sprintf("%s=%s ", k, v)
+				cmdArgs = append(cmdArgs, fmt.Sprintf("--%s", c_type.Field(i).Tag.Get("gcloud")))
+				cmdArgs = append(cmdArgs, fmt.Sprintf("%s=%s", k, v))
 			}
-
-			cmd += arg
 
 		default:
 			continue
 		}
 	}
 
-	return cmd
+	for i, v := range cmdArgs {
+		fmt.Println(i, v)
+	}
+
+	return cmdArgs
 }
