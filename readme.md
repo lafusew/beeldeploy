@@ -52,7 +52,7 @@ Currently all google cloud functions deployement -flags aren't supported you fin
 |               retry                |     ✅     |               retry               |
 |        run-service-account         |     ✅     |        run-service-account        |
 |              runtime               |     ✅     |              runtime              |
-|           security-level           |     ❌     |
+|           security-level           |     ✅     |          security-level           |
 | serve-all-traffic-latest-revision  |     ✅     | serve-all-traffic-latest-revision |
 |          service-account           |     ✅     |          service-account          |
 |               region               |     ✅     |              region               |
@@ -69,9 +69,9 @@ Currently all google cloud functions deployement -flags aren't supported you fin
 |       update-build-env-vars        |     ❌     |
 |         build-worker-pool          |     ❌     |
 |      clear-build-worker-pool       |     ❌     |
-|      clear-docker-repository       |     ❌     |
+|      clear-docker-repository       |     ✅     |      clear-docker-repository      |
 |         docker-repository          |     ❌     |
-|           clear-env-vars           |     ❌     |
+|           clear-env-vars           |     ✅     |            clear-envs             |
 |            set-env-vars            |     ✅     |               envs                |
 |          remove-env-vars           |     ❌     |
 |          update-env-vars           |     ❌     |
@@ -79,15 +79,15 @@ Currently all google cloud functions deployement -flags aren't supported you fin
 |              kms-key               |     ❌     |
 |            clear-labels            |     ❌     |
 |           remove-labels            |     ❌     |
-|         clear-max-instance         |     ❌     |
+|         clear-max-instance         |     ✅     |        clear-max-instances        |
 |           max-instances            |     ✅     |           max-instances           |
-|         clear-min-instance         |     ❌     |
+|         clear-min-instance         |     ✅     |        clear-min-instances        |
 |           min-instances            |     ✅     |           min-instances           |
-|           clear-secrets            |     ❌     |
+|           clear-secrets            |     ✅     |           clear-secrets           |
 |            set-secrets             |     ✅     |              secrets              |
 |           remove-secrets           |     ❌     |
 |           update-secrets           |     ❌     |
-|        clear-vpc-connector         |     ❌     |
+|        clear-vpc-connector         |     ✅     |             clear-vpc             |
 |           vpc-connector            |     ✅     |                vpc                |
 |           trigger-bucket           |     ❌     |
 |            tigger-http             |     ✅     |           trigger-http            |
